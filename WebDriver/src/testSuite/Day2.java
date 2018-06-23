@@ -86,6 +86,7 @@ public class Day2 {
 		}
 		else
 			System.out.println("Register Unsuccessful");
+			System.out.println("Register Unsuccessful");
 	}
 
 
