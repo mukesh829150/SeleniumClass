@@ -1,13 +1,10 @@
 package testSuite;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Elements {
@@ -28,12 +25,18 @@ public class Elements {
 		driver.findElement(By.xpath("//a[text()='Page 2']")).click();
 		//Thread.sleep(2000);
 		//Implicit wait--driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+		WebDriverWait wait=new WebDriverWait(driver,10);
 		
-	
-		WebDriverWait wait=new WebDriverWait(driver,5000);
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[contains(text(),'Aliquam')]"))));
-		
+	try {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Aliquamppp')]")));
 		WebElement textArea=driver.findElement(By.xpath("//*[contains(text(),'Aliquam')]"));
+		System.out.println(textArea.getText());	
+	}catch(Exception E) {
+		E.printStackTrace();
+		System.out.println("Text Area Not found after 5 secs");
+	}
+		
+		
 		
 		
 		
