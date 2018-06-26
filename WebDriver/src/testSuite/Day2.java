@@ -23,7 +23,7 @@ public class Day2 {
 	public static void main(String args[]) throws IOException {
 		
 		
-		//TestData
+		//TestData-123
 		Properties dataProp=new Properties();
 		dataProp=loadProperties("//Data//testData.properties");
 		
