@@ -117,6 +117,7 @@ public class Day2 {
 		InputStream Stream=new FileInputStream(System.getProperty("user.dir")+Path);
 		prop.load(Stream);
 		return prop;
+		//SYSO
 		
 	}
 }
