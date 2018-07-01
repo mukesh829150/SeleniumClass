@@ -28,6 +28,7 @@ public class WebTable extends Browser{
 		if(ColumnName.getText().equalsIgnoreCase("IDBI Bank Ltd.")) {
 			WebElement PrevClose=driver.findElement(By.xpath("//table[@class='dataTable']/tbody/tr["+(i+2)+"]/td[3]"));
 			System.out.println("The price is : = "+PrevClose.getText());
+			
 		}
 	}
 		
