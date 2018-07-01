@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FLIPKART">
+  <test thread-count="5" name="REGRESSION TEST">
+    <classes>
+      <class name="testSuite.AssignmentEbay"/>
+      <class name="testSuite.AssignmentFlipkartMukesh"></class>
+      <class name="testSuite.WebTable"></class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

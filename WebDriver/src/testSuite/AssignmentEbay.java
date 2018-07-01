@@ -4,28 +4,28 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
-public class AssignmentEbay {
-	
-	public static WebDriver driver;
-	
-	public static String driverpath = System.getProperty("user.dir") + "//drivers";
+import main.Browser;
 
-	public static void main(String[] args) throws IOException, InterruptedException {
-		
+public class AssignmentEbay extends Browser {
+
+@Test(priority=2,enabled=false)
+	//public  void RegistereBay() throws IOException, InterruptedException {
+	public  void RegistereBay() throws IOException, InterruptedException {
+
 		Properties dataProp = new Properties();		
 		
 		//Load all the Data Related to Test Case
 		String URL=null,firstName = null,lastName = null,passWord = null;
 		try {
-			dataProp = loadProperties("//data2//testEbay.properties");
+			dataProp = loadProperties("//Data//testEbay.properties");
 			URL=dataProp.getProperty("URL");
 			firstName= dataProp.getProperty("FirstName");
 			lastName=dataProp.getProperty("LastName");
@@ -33,16 +33,11 @@ public class AssignmentEbay {
 		} catch (Exception e) {
 			System.out.println("Data Not Loaded Properly "+e.getMessage());
 		}
+		driver.navigate().to(URL);
+		driver.manage().window().maximize();
 		
 		Properties objectProp = new Properties();
 		objectProp = loadProperties("//Object//objectEbay.properties");
-		
-		
-		String chromepath = driverpath + "//chromedriver.exe";
-		System.setProperty("webdriver.chrome.driver", chromepath);
-		driver = new ChromeDriver();
-		driver.navigate().to(URL);
-		driver.manage().window().maximize();
 		
 		//System.out.println(driver.getTitle());
 		String title = "Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay";
@@ -91,9 +86,6 @@ public class AssignmentEbay {
 		
 		
 		insertKey.sendKeys(password, passWord).build().perform();
-		
-		
-		Thread.sleep(2000);
 	
 		
 		

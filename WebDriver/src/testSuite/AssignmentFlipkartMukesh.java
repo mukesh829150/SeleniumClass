@@ -6,21 +6,19 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
-public class AssignmentFlipkartMukesh {
-	public static WebDriver driver;
-	
-	
-	
-	public static String driverPath = System.getProperty("user.dir")+"//drivers";
+import main.Browser;
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+public class AssignmentFlipkartMukesh extends Browser {	
+
+@Test(priority=1, enabled=false)
+	//public static void main(String[] args) throws IOException, InterruptedException {
+	public void FlipkartFilter() throws IOException, InterruptedException {
 		 Properties dataProp = null;
 		 Properties objectProp = null;
 		 String FlipkartURL=null;
@@ -44,10 +42,7 @@ public class AssignmentFlipkartMukesh {
 		    catch(Exception e) {
 		    	System.out.println("Property file not found");
 		    }
-		    
-		    String chromePath=driverPath+"//chromedriver.exe";
-		    System.setProperty("webdriver.chrome.driver", chromePath);
-		    driver=new ChromeDriver();
+
 				//Step 1: Flipkart URL
 		    try {
 		    	driver.navigate().to(FlipkartURL);
@@ -94,7 +89,7 @@ public class AssignmentFlipkartMukesh {
 				s=records.getText();
 				//Step 5: Number of item displayed for the selected range
 				System.out.println("Total record under "+dataProp.getProperty("MaxValue")+" range are:"+s);
-				}
+}
 				
 	private static WebElement getElement(String value) {
 		WebElement a=null;
@@ -134,7 +129,6 @@ public class AssignmentFlipkartMukesh {
 		return prop;
 		//SYSO
 	}
-
 	
 
 }
