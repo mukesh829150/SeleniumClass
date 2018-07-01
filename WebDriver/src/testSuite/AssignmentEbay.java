@@ -25,7 +25,7 @@ public class AssignmentEbay {
 		//Load all the Data Related to Test Case
 		String URL=null,firstName = null,lastName = null,passWord = null;
 		try {
-			dataProp = loadProperties("//data2//testEbay.properties");
+			dataProp = loadProperties("//data//testEbay.properties");
 			URL=dataProp.getProperty("URL");
 			firstName= dataProp.getProperty("FirstName");
 			lastName=dataProp.getProperty("LastName");
