@@ -1,0 +1,4 @@
+Go to Site http://demo.automationtesting.in/WebTable.html
+Search First Name as "carlo" within the table..
+if not found click on next arrow button and search till you find the Fisrt Name
+After Finding Double Click on the Edit button
