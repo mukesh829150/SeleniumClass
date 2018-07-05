@@ -6,6 +6,7 @@
       <class name="testSuite.AssignmentEbay"/>
       <class name="testSuite.AssignmentFlipkartMukesh"></class>
       <class name="testSuite.WebTable"></class>
+      <class name="AssignmentWebTable"></class>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
