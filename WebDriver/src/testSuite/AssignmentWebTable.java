@@ -67,9 +67,9 @@ public class AssignmentWebTable extends Browser {
 			
 			numRows++;
 			driver.findElement(By.xpath("//button[@class='ui-grid-pager-next']")).click();
-		}*/
+		}
 		
-		//WebElement FirstName = driver.findElement(By.xpath("//div[text()='carlo']"));
+		WebElement FirstName = driver.findElement(By.xpath("//div[text()='carlo']"));*/
 
 	}
 	
