@@ -19,7 +19,9 @@ public class AssignmentWebTable extends Browser {
 		driver.manage().window().maximize();
 		
 		WebDriverWait wait=new WebDriverWait(driver,10);
+		
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='ui-grid-cell-contents ng-binding ng-scope']")));
+		
 		List<WebElement> tableColnums = driver.findElements(By.xpath("//div[@class='ui-grid-cell-contents ng-binding ng-scope']"));
 		int numRows = tableColnums.size();
 		System.out.println(numRows);
