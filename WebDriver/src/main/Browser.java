@@ -25,9 +25,9 @@ public class Browser {
 		driver = new FirefoxDriver();
 	}
 	
-	@AfterMethod
+	/*@AfterMethod
 	public void CloseBrowser() {
 		driver.close();
-	}
+	}*/
 
 }
