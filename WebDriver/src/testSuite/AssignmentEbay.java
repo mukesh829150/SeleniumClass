@@ -6,26 +6,27 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 
-import main.Browser;
+public class AssignmentEbay {
+	
+	public static WebDriver driver;
+	
+	public static String driverpath = System.getProperty("user.dir") + "//drivers";
 
-public class AssignmentEbay extends Browser {
-
-@Test(priority=2,enabled=false)
-	//public  void RegistereBay() throws IOException, InterruptedException {
-	public  void RegistereBay() throws IOException, InterruptedException {
-
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
 		Properties dataProp = new Properties();		
 		
 		//Load all the Data Related to Test Case
 		String URL=null,firstName = null,lastName = null,passWord = null;
 		try {
-			dataProp = loadProperties("//Data//testEbay.properties");
+			dataProp = loadProperties("//data//testEbay.properties");
 			URL=dataProp.getProperty("URL");
 			firstName= dataProp.getProperty("FirstName");
 			lastName=dataProp.getProperty("LastName");
@@ -33,11 +34,16 @@ public class AssignmentEbay extends Browser {
 		} catch (Exception e) {
 			System.out.println("Data Not Loaded Properly "+e.getMessage());
 		}
-		driver.navigate().to(URL);
-		driver.manage().window().maximize();
 		
 		Properties objectProp = new Properties();
 		objectProp = loadProperties("//Object//objectEbay.properties");
+		
+		
+		String chromepath = driverpath + "//chromedriver.exe";
+		System.setProperty("webdriver.chrome.driver", chromepath);
+		driver = new ChromeDriver();
+		driver.navigate().to(URL);
+		driver.manage().window().maximize();
 		
 		//System.out.println(driver.getTitle());
 		String title = "Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay";
@@ -86,6 +92,9 @@ public class AssignmentEbay extends Browser {
 		
 		
 		insertKey.sendKeys(password, passWord).build().perform();
+		
+		
+		Thread.sleep(2000);
 	
 		
 		
@@ -130,4 +139,4 @@ public class AssignmentEbay extends Browser {
 		return prop;
 	}
 
-}
+}//test

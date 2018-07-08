@@ -6,6 +6,10 @@
       <class name="testSuite.AssignmentEbay"/>
       <class name="testSuite.AssignmentFlipkartMukesh"></class>
       <class name="testSuite.WebTable"></class>
+<<<<<<< HEAD
+=======
+      <class name="AssignmentWebTable"></class>
+>>>>>>> branch 'master' of https://github.com/mukesh829150/SeleniumClass.git
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
