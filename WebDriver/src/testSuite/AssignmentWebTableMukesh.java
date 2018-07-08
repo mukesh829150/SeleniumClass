@@ -1,10 +1,8 @@
 package testSuite;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Driver;
 import java.util.List;
 import java.util.Properties;
 
@@ -13,20 +11,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.service.DriverService;
+import org.testng.annotations.Test;
 
-public class AssignmentWebTableMukesh {
+import main.Browser;
+
+public class AssignmentWebTableMukesh extends Browser{
 	public static WebDriver driver;
 	public static String driverPath = System.getProperty("user.dir")+"//drivers";
 
-	public static void main(String[] args) throws IOException {
+	@Test
+	public void searchtable() throws IOException, InterruptedException {
 		//TestData-123-456
 				Properties dataProp=new Properties();
 				dataProp=loadProperties("//Data//testData.properties");
 				
 				//ObjectData
-				Properties objectProp=new Properties();
-				objectProp=loadProperties("//Object//testObject.properties");
+				//Properties objectProp=new Properties();
+				//objectProp=loadProperties("//Object//testObject.properties");
 						
 				String chromePath=driverPath+"//chromedriver.exe";
 				System.setProperty("webdriver.chrome.driver", chromePath);
@@ -34,35 +35,38 @@ public class AssignmentWebTableMukesh {
 				driver.navigate().to(dataProp.getProperty("WebTableUrl"));
 				driver.manage().window().maximize();
 				System.out.println("Webtable URL opened");
-				//List<WebElement> tablelist=	driver.findElements(By.xpath("//div[@class='ui-grid-cell-contents ui-grid-header-cell-primary-focus']']/tbody/tr"));
-				//int noOfRows=tablelist.size();
+				Thread.sleep(3000);
+				List<WebElement> tablelist=	driver.findElements(By.xpath("//*[contains(@id,'-uiGrid-0006-cell')]"));
+				
 				//System.out.println(noOfRows);
+				Actions action = new Actions(driver);
+				boolean flag=false;
 				
-				for(int i=0;i<10;i++)
-				{ 
-					Actions action = new Actions(driver);
-					WebElement FirstName=driver.findElement(By.xpath("//*[contains(@id,'"+i+"-uiGrid-0006-cell')]"));
-					if(FirstName.getText().equalsIgnoreCase("Dinesh")) 
-						System.out.println("Searched Name present");
-					WebElement editButton = driver.findElement(By.xpath("(//i[@class='fa fa-pencil'])["+i+"]"));
-					action.doubleClick(editButton).build().perform();
-					break;
-						
-					
-					//else {
-						//WebElement Nextbutton=driver.findElement(By.xpath("//button[@title='Page forward']"));
-						//if (Nextbutton.isEnabled())
-							//Nextbutton.click();
-						//System.out.println("Searched Name not present");
-					}
-					
-				}
-				   
-					
-				
-				
-				
-	//}
+				WebElement Nextbutton=driver.findElement(By.xpath("//button[@title='Page forward']"));
+				do {
+					int noOfRows=tablelist.size();
+					for(int i=0;i<noOfRows;i++){
+						WebElement FirstName=driver.findElement(By.xpath("//*[contains(@id,'"+i+"-uiGrid-0006-cell')]"));
+						if(FirstName.getText().equalsIgnoreCase("Carlo")) {
+							flag=true;
+							System.out.println("Searched Name present");
+							WebElement editButton = driver.findElement(By.xpath("(//i[@class='fa fa-pencil'])["+(i+1)+"]"));
+							action.doubleClick(editButton).build().perform();
+							//Click on Edit Button and Change the firstName	
+							FirstName.findElement(By.xpath(".//input")).clear();
+							FirstName.findElement(By.xpath(".//input")).sendKeys("Mukesh");
+							
+							
+							break;
+							}
+						}
+					if(flag==false) {
+						Nextbutton.click();
+						}else {
+							break;
+							}
+					}while(Nextbutton.isEnabled());
+	}
 
 	private static Properties loadProperties(String Path) throws IOException {
 		Properties prop= new Properties();
