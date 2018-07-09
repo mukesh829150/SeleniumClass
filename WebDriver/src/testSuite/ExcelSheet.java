@@ -1,7 +1,6 @@
 package testSuite;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -23,7 +22,7 @@ public class ExcelSheet {
 	@Test
 	public void ReadExcel() throws IOException {
 		
-		ExcelFile=new FileInputStream(System.getProperty("user.dir")+"//src//test//resources//ThamesWaterFiori.xlsx");
+		ExcelFile=new FileInputStream(System.getProperty("user.dir")+"//data//excelWork.xlsx");
 		workbook=new XSSFWorkbook(ExcelFile);
 		sheet=	workbook.getSheetAt(0);
 		
