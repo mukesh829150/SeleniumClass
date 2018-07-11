@@ -26,6 +26,7 @@ public class WidgetsAccordion extends Browser{
 			String insideText = driver.findElement(By.xpath("//div[@id='collapse"+i+"']/div")).getText();
 			System.out.println(insideText);
 		}
+		//try catch: to be implemented
 	}
 
 }
