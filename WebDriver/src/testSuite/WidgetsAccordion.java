@@ -38,6 +38,7 @@ public class WidgetsAccordion extends Browser{
 				driver.findElement(By.xpath("//a[@href='#collapse"+i+"']/b")).click();
 				String insideText = driver.findElement(By.xpath("//div[@id='collapse"+i+"']/div")).getText();
 				System.out.println("Text inside the accord tab is : "+insideText);
+				break;
 			}
 		}
 	}
