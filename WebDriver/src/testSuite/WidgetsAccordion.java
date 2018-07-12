@@ -19,6 +19,7 @@ public class WidgetsAccordion extends Browser{
 		int totalnoAccords = totalAccords.size();
 		System.out.println(totalnoAccords);
 		
+		//All Texts Print
 		for(int i = 1; i <= totalnoAccords; i++){
 			String linkName = driver.findElement(By.xpath("//a[@href='#collapse"+i+"']/b")).getText();
 			System.out.println(linkName);
@@ -26,7 +27,19 @@ public class WidgetsAccordion extends Browser{
 			String insideText = driver.findElement(By.xpath("//div[@id='collapse"+i+"']/div")).getText();
 			System.out.println(insideText);
 		}
-		//try catch: to be implemented
+		
+		System.out.println("****************************************************************************");
+		
+		//Unique Text Print
+		for(int i = 1; i <= totalnoAccords; i++){
+			String namBtn = driver.findElement(By.xpath("//a[@href='#collapse"+i+"']/b")).getText();
+			if(namBtn.equalsIgnoreCase("Collapsible Group 3 - Methhod Chaining")) {
+				System.out.println("Accord tab found at position : "+i);
+				driver.findElement(By.xpath("//a[@href='#collapse"+i+"']/b")).click();
+				String insideText = driver.findElement(By.xpath("//div[@id='collapse"+i+"']/div")).getText();
+				System.out.println("Text inside the accord tab is : "+insideText);
+			}
+		}
 	}
 
 }
