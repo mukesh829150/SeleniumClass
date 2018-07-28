@@ -22,13 +22,14 @@ public class AutoCompleteMukesh  extends Browser {
 		
 		System.out.println(total);
 		
-		for(int i=0;i<=total;i++) {
-			WebElement first=driver.findElement(By.xpath("(//ul/li/a[@class='ui-corner-all'])[i]"));
+		for(int i=1;i<=total;i++) {
+			WebElement first=driver.findElement(By.xpath("(//ul/li/a[@class='ui-corner-all'])["+i+"]"));
 			String value=first.getText();
-			if(value.equalsIgnoreCase(text));
+			if(value.equalsIgnoreCase(text)) {
 			 System.out.println("Trying to select: "+text);
 			 first.click();
-	            break;
+			 break;
+			}
 	            
 	         /*   for(WebElement search:optionsToSelect) {
 	            	String value=search.getText();
