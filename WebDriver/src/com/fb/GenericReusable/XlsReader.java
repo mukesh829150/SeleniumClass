@@ -34,18 +34,33 @@ public class XlsReader {
 	}
 	
 	public String getCellData(String sheetName,String RowName, String ColumnName) {
+		int RowNumber=0, colNumber = 0;
+		String returnValue=null;
 		sheet=workbook.getSheet(sheetName);
 		int RowNum=sheet.getLastRowNum();
 		
 		for(int i=1; i<RowNum;i++) {
 			row=sheet.getRow(i);
 			cell=row.getCell(0);
-			String text=cell.getStringCellValue();
+			if(cell.getStringCellValue().equalsIgnoreCase(RowName)) {
+				RowNumber=i;
+				}
+			}
+		//RowNumber=1
+		for(int i=0;i<sheet.getRow(0).getLastCellNum();i++) {
+			row=sheet.getRow(0);
+			cell=row.getCell(i);
 			
+			if(cell.getStringCellValue().equalsIgnoreCase(ColumnName)) {
+				colNumber=i;
+			}
+			//colNumber=1;
+			
+			returnValue=getCellData(sheetName,RowNumber,colNumber);
 			
 		}
 		
-		return null;
+		return returnValue;
 		
 	}
 }

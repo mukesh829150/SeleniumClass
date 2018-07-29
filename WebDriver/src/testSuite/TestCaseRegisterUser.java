@@ -31,7 +31,7 @@ private void Step02ClickOnSignUP() {
 
 private void Step01ProvideFirstNameAndBday(){
 	Lpage=PageFactory.initElements(driver, LandingPage.class);
-	String firstName=ReadExcel.getCellData("LandingPage", 1, 1);
+	String firstName=ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "FirstName");
 	Lpage.Register(firstName, "Lal", "30");
 		
 	}
