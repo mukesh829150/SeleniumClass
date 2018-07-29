@@ -15,6 +15,8 @@ public class Browser {
 		String chromePath = driverPath + "//chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromePath);
 		driver = new ChromeDriver();
+		driver.navigate().to("https://www.facebook.com/");
+		driver.manage().window().maximize();
 	}
 //	@BeforeMethod
 	public void OpenFirefoxBrowser() {

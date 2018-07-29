@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.fb.GenericReusable.WebElementAction;
+
 public class LandingPage{
 	
 	WebDriver LandingPageDriver;
@@ -12,7 +14,6 @@ public class LandingPage{
 	public LandingPage(WebDriver driver) {
 		LandingPageDriver=driver;
 	}
-
 	
 	@FindBy(name="email")
 	public WebElement txtLoginEmail;
@@ -59,6 +60,16 @@ public class LandingPage{
 			txtLoginEmail.sendKeys(UserName);
 			txtLoginPassword.sendKeys(Password);
 			btnLogin.click();
+			return true;
+			}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	public boolean Register(String FirstName, String BirthDay) {
+		try {
+			txtFirstName.sendKeys(FirstName);
+			(new WebElementAction()).selectElementByVisibleText(drpRegBirthday, BirthDay);
 			return true;
 			}catch(Exception e) {
 			e.printStackTrace();
