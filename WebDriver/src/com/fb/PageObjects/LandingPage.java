@@ -66,9 +66,10 @@ public class LandingPage{
 			return false;
 		}
 	}
-	public boolean Register(String FirstName, String BirthDay) {
+	public boolean Register(String FirstName, String LastName, String BirthDay) {
 		try {
 			txtFirstName.sendKeys(FirstName);
+			txtLasttName.sendKeys(LastName);
 			(new WebElementAction()).selectElementByVisibleText(drpRegBirthday, BirthDay);
 			return true;
 			}catch(Exception e) {
