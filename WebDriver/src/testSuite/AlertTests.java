@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import com.fb.GenericReusable.WebElementAction;
+
 import main.Browser;
 
 public class AlertTests extends Browser{
@@ -31,7 +33,9 @@ public class AlertTests extends Browser{
 		String alertText = alert.getText();
 		System.out.println(alertText);
 		Thread.sleep(3000);
-		alert.accept();
+		WebElementAction acceptalert = new WebElementAction();
+		acceptalert.alertAccept();
+		//alert.accept();
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//button[@class='btn btn-danger']")).click();
 		alert.accept();
