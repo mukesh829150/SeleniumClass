@@ -1,6 +1,5 @@
 package testSuite;
 
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Test;
 
 import com.fb.GenericReusable.XlsReader;
@@ -30,7 +29,7 @@ private void Step02ClickOnSignUP() {
 
 
 private void Step01ProvideFirstNameAndBday(){
-	Lpage=PageFactory.initElements(driver, LandingPage.class);
+	Lpage=new LandingPage(driver);
 	String firstName=ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "FirstName");
 	Lpage.Register(firstName, "Lal", "30");
 		

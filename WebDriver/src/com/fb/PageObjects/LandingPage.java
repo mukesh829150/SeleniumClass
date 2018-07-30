@@ -3,16 +3,20 @@ package com.fb.PageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fb.GenericReusable.WebElementAction;
 
 public class LandingPage{
 	
-	WebDriver LandingPageDriver;
+	WebDriver driver;
 	
 	
 	public LandingPage(WebDriver driver) {
-		LandingPageDriver=driver;
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
 	}
 	
 	@FindBy(name="email")
@@ -54,10 +58,15 @@ public class LandingPage{
 	@FindBy(name="//button[@name='websubmit']")
 	WebElement SignUp;
 	
+	private WebElement waitForVisibility(WebElement element) throws Error{
+	       return new WebDriverWait(driver, 30)
+	            .until(ExpectedConditions.visibilityOf(element));
+	}
+	
 	
 	public boolean Login(String UserName, String Password) {
 		try {
-			txtLoginEmail.sendKeys(UserName);
+			waitForVisibility(txtLoginEmail).sendKeys(UserName);
 			txtLoginPassword.sendKeys(Password);
 			btnLogin.click();
 			return true;
@@ -68,7 +77,7 @@ public class LandingPage{
 	}
 	public boolean Register(String FirstName, String LastName, String BirthDay) {
 		try {
-			txtFirstName.sendKeys(FirstName);
+			waitForVisibility(txtFirstName).sendKeys(FirstName);
 			txtLasttName.sendKeys(LastName);
 			(new WebElementAction()).selectElementByVisibleText(drpRegBirthday, BirthDay);
 			return true;
