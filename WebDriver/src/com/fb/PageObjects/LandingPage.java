@@ -4,8 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fb.GenericReusable.WebElementAction;
 
@@ -18,6 +16,10 @@ public class LandingPage{
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	//page object model using Page Factory
+	
+	//constructor creates objects
 	
 	@FindBy(name="email")
 	public WebElement txtLoginEmail;
@@ -58,15 +60,12 @@ public class LandingPage{
 	@FindBy(name="//button[@name='websubmit']")
 	WebElement SignUp;
 	
-	private WebElement waitForVisibility(WebElement element) throws Error{
-	       return new WebDriverWait(driver, 30)
-	            .until(ExpectedConditions.visibilityOf(element));
-	}
+	WebElementAction elementAction = new WebElementAction();
 	
 	
 	public boolean Login(String UserName, String Password) {
 		try {
-			waitForVisibility(txtLoginEmail).sendKeys(UserName);
+			elementAction.waitForVisibility(txtLoginEmail).sendKeys(UserName);
 			txtLoginPassword.sendKeys(Password);
 			btnLogin.click();
 			return true;
@@ -77,9 +76,9 @@ public class LandingPage{
 	}
 	public boolean Register(String FirstName, String LastName, String BirthDay) {
 		try {
-			waitForVisibility(txtFirstName).sendKeys(FirstName);
+			elementAction.waitForVisibility(txtFirstName).sendKeys(FirstName);
 			txtLasttName.sendKeys(LastName);
-			(new WebElementAction()).selectElementByVisibleText(drpRegBirthday, BirthDay);
+			elementAction.selectElementByVisibleText(drpRegBirthday, BirthDay);
 			return true;
 			}catch(Exception e) {
 			e.printStackTrace();

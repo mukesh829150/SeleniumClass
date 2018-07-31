@@ -91,5 +91,10 @@ public class WebElementAction extends Browser{
 			return false;
 		}
 	}
+	
+	public WebElement waitForVisibility(WebElement element) throws Error{
+	       return new WebDriverWait(driver, 30)
+	            .until(ExpectedConditions.visibilityOf(element));
+	}
 
 }
