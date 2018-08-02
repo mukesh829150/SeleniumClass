@@ -22,7 +22,7 @@ public class TestCaseRegisterUser extends Browser{
 	}
 
 
-private void Step02ClickOnSignUP() {
+	private void Step02ClickOnSignUP() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -31,7 +31,8 @@ private void Step02ClickOnSignUP() {
 private void Step01ProvideFirstNameAndBday(){
 	Lpage=new LandingPage(driver);
 	String firstName=ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "FirstName");
-	Lpage.Register(firstName, "Lal", "30");
+	String lastName=ReadExcel.getCellData("LandingPage", "TestCaseRegisterUser1", "LastName");
+	Lpage.Register(firstName, lastName, "30");
 		
 	}
 

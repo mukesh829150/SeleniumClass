@@ -27,7 +27,7 @@ public class LandingPage{
 	@FindBy(name="pass")
 	public WebElement txtLoginPassword;
 	
-	@FindBy(id="u_0_2")
+	@FindBy(id="loginbutton")
 	public WebElement btnLogin;
 	
 	@FindBy(id="u_0_j")
