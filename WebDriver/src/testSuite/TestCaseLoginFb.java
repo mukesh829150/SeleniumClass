@@ -22,11 +22,10 @@ public class TestCaseLoginFb extends Browser{
 	}
 	
 	@Test
-	public void TestLogin() {
+	public void TestLogin() throws InterruptedException {
 		
 		Step01ProvideEmailandPass();
-		Step02ClickLogin();
-		Step03ClickSearchBox();
+		Step02ClickSearchBox();//individually handle through try catch
 	}
 
 	private void Step01ProvideEmailandPass() {
@@ -36,16 +35,18 @@ public class TestCaseLoginFb extends Browser{
 		Lpage.Login(emailId, password);
 	}
 	
-	private void Step02ClickLogin() {
+    /*private void Step02ClickLogin() {
 			Lpage.btnLogin.click();
-	}
+	}*/
 	
-	private void Step03ClickSearchBox() {
+	private void Step02ClickSearchBox() throws InterruptedException {
 		
 		Home = new HomePage(driver);
 		
 		//hide/show notification box made page black and no operation can be made without manually disabling the alert box.
-		actions.alertAccept();
+		//actions = new WebElementAction();
+		//actions.alertAccept();
+		Thread.sleep(5000);
 		Home.txtSearchBox.click();
 	}
 
