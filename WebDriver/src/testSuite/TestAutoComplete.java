@@ -32,6 +32,7 @@ public class TestAutoComplete extends Browser{
 		String searchedVal = autoVal.getText();
 		if(searchedVal.equalsIgnoreCase(expectedVal)) {
 			System.out.println("Found text : '"+expectedVal+"' with auto complete value 'IND'");
+			autoVal.click();
 		}
 	}
 	
