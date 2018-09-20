@@ -96,3 +96,4 @@ public class AlertTestRevised {
 	}
 
 }
+//All three covered
