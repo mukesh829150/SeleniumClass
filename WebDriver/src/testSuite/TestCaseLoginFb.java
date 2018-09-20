@@ -48,6 +48,10 @@ public class TestCaseLoginFb extends Browser{
 		//actions.alertAccept();
 		Thread.sleep(5000);
 		Home.txtSearchBox.click();
+		Home.txtSearchBox.sendKeys("Gaurav Kumar Lal");
+		Home.searchButton.click();
+		Thread.sleep(6000);
+		Home.myFriendId.click();
 	}
 
 }
