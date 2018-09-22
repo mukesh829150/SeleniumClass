@@ -1,5 +1,7 @@
 package testSuite;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -32,7 +34,19 @@ public class TestWindowRevised {
 			driver.findElement(By.xpath("//button[text()='click ']")).click();
 			String parentHandle = driver.getWindowHandle();
 			Set<String> handles = driver.getWindowHandles();
-			for(String presentHandle:handles) {
+			Iterator<String> itr= handles.iterator();
+			while(itr.hasNext()) {
+			String str=	itr.next();
+			if(!str.equalsIgnoreCase(parentHandle)) {
+				String requiredWindow = driver.switchTo().window(str).getTitle();
+				if(requiredWindow.equalsIgnoreCase("Sakinalium | Home")) {
+					result = "success";
+					break;
+				}
+			}
+				
+			}
+		/*	for(String presentHandle:handles) {
 				if(!presentHandle.equalsIgnoreCase(parentHandle)) {
 					String requiredWindow = driver.switchTo().window(presentHandle).getTitle();
 					if(requiredWindow.equalsIgnoreCase("Sakinalium | Home")) {
@@ -40,7 +54,7 @@ public class TestWindowRevised {
 						break;
 					}
 				}
-			}
+			}*/
 			if(result.equalsIgnoreCase("success")){
 				Thread.sleep(3000);
 				driver.findElement(By.xpath("//a[@title='Sakinalium Demo C#-Mobile']")).click();
