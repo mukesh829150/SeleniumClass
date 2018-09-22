@@ -2,14 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="FLIPKART">
   <test thread-count="5" name="REGRESSION TEST">
+  <parameter name="username" value="testuser_1" />
+  <parameter name="password" value="Test@123" />
     <classes>
-      <class name="testSuite.AssignmentEbay"/>
+      <class name="testSuite.TestngParameters"></class>
+      <!-- <class name="testSuite.AssignmentEbay"></class>
       <class name="testSuite.AssignmentFlipkartMukesh"></class>
       <class name="testSuite.WebTable"></class>
+      <class name="testSuite.AssignmentWebTable"></class>
 <<<<<<< HEAD
 =======
-      <class name="AssignmentWebTable"></class>
->>>>>>> branch 'master' of https://github.com/mukesh829150/SeleniumClass.git
+>>>>>>> branch 'master' of https://github.com/mukesh829150/SeleniumClass.git-->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
