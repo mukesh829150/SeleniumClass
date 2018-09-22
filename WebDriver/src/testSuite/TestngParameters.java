@@ -24,8 +24,8 @@ public class TestngParameters {
 		driver.manage().window().maximize();
 	}
 	
-	@Test
 	@Parameters({"username", "password"})
+	@Test(alwaysRun=true)
 	public void SendParameters(String username, String password) {
 		
 		WebDriverWait wait = new WebDriverWait(driver, 20);
