@@ -3,17 +3,18 @@ package testSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class TestFrameRevised {
 	
 	WebDriver driver;
-	String driverpath = System.getProperty("user.dir") + "\\drivers";
+	String driverpath = System.getProperty("user.dir") + "//drivers";
 	
 	@BeforeTest
 	public void OpenChromeBrowser() {
-		String chromePath = driverpath + "\\chromedriver.exe";
+		String chromePath = driverpath + "//chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromePath);
 		System.out.println(chromePath);
 		driver = new ChromeDriver();
@@ -52,5 +53,8 @@ public class TestFrameRevised {
 			System.out.println("Multiple frame not found");
 		}
 	}
-
+	@AfterTest
+	public void CloseBrowser() {
+		driver.close();
+	}
 }
