@@ -7,17 +7,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class AlertTestRevised {
 	
 	WebDriver driver;
-	String driverpath = System.getProperty("user.dir") + "//drivers";
+	String driverpath = System.getProperty("user.dir") + "\\drivers";
 	
 	@BeforeTest
 	public void OpenChromeBrowser() {
-		String chromePath = driverpath + "//chromedriver.exe";
+		String chromePath = driverpath + "\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromePath);
 		driver = new ChromeDriver();
 		driver.navigate().to("http://demo.automationtesting.in/Alerts.html");
@@ -94,6 +95,9 @@ public class AlertTestRevised {
 			System.out.println("Alert Box for alert with Textbox in not present");
 		}
 	}
-
+	@AfterTest
+	public void CloseBrowser() {
+		driver.close();
+	}
 }
 //All three covered..

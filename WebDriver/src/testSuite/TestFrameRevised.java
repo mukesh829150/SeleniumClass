@@ -9,12 +9,13 @@ import org.testng.annotations.Test;
 public class TestFrameRevised {
 	
 	WebDriver driver;
-	String driverpath = System.getProperty("user.dir") + "//drivers";
+	String driverpath = System.getProperty("user.dir") + "\\drivers";
 	
 	@BeforeTest
 	public void OpenChromeBrowser() {
-		String chromePath = driverpath + "//chromedriver.exe";
+		String chromePath = driverpath + "\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chromePath);
+		System.out.println(chromePath);
 		driver = new ChromeDriver();
 		driver.navigate().to("http://demo.automationtesting.in/Frames.html");
 		driver.manage().window().maximize();
